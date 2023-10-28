@@ -1,5 +1,7 @@
 #include <iostream>
 #include "matrix.h"
+#include "Array.h"
+#include "function.h"
 
 using namespace std;
 
