@@ -9,7 +9,7 @@ int main() {
 	setlocale(LC_ALL, "RU");
 
 	// test coment 1
-
+    // test coment 3
 
 
 
