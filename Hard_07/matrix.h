@@ -5,5 +5,45 @@ using namespace std;
 
 class Matrix
 {
+private:
+
+	int* matr;
+	int size_M;
+
+public:
+
+	Matrix();                                          // конструктор по умолчанию
+
+	Matrix(const Matrix& other);                       // конструктор копирования
+
+	Matrix(int size);                                  // конструктор с параметрами
+
+	~Matrix();                                         // деструктор
+
+	int getSize_M();                                   // геттер
+
+	void setSize_M(int size);                          // сеттер
+
+	void input_M();                                    // ввод массива с клавиатуры
+
+	void output_M();                                   // вывод массива на экран
+
+	Matrix& operator =(const Matrix& other);           // перегрузка оператора =
+
+	Matrix operator +(const Matrix& other);            // перегрузка оператора +
+
+	Matrix& operator +=(int elem);                     // добавление элемента в конец массива (перегрузка +=)
+
+	Matrix& operator -(int key);                       // удаление элемента по ключу (перегрузка -)
+
+	bool operator ==(const Matrix& other);             // перегрузка оператора ==
+
+	int& operator [](int elem);                        // перегрузка оператора []
+
+	friend ostream& operator <<(ostream& os, Matrix& array);   // перегрузка оператора <<
+
+	friend istream& operator >>(istream& es, Matrix& array);   // перегрузка оператора >>
+
+	int search_M(int element);                         // поиск элемента в массиве (первого встретившегося)
 
 };
