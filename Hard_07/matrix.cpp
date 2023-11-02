@@ -6,23 +6,29 @@
 //-------------------------- ГЕТТЕР
 int Matrix::getSize_M()
 {
-	return(size_M);
+	return(size_M);                             // число СТРОК
 }
 
 //-------------------------- СЕТТЕР
 
 void Matrix::setSize_M(int size)
 {
-	this->size_M = size;
+	this->size_M = size;                        // число СТРОК
 }
 
-//-------------------------- КОНСТРУКТОР ПО УМОЛЧАНИЮ   !!!
+//-------------------------- КОНСТРУКТОР ПО УМОЛЧАНИЮ   
 
 
 Matrix::Matrix()
 {
 	this->size_M = 1;                       // по умолчанию матрица из одного элемента
 	matr = new Array[size_M];               // создаем матрицу типа Array
+
+	for (int i = 0; i < size_M; i++)
+	{
+		matr[i] = Array();                  // для каждой "строки" создаем МАССИВ (по умолчанию) 
+	}
+
 	for (int i = 0; i < size_M; i++)
 	{
 		for (int j = 0; j < size_M; j++)
@@ -41,7 +47,8 @@ Matrix::Matrix(const Matrix& other)
 
 	for (int i = 0; i < size_M; i++)                 // устанавливаем размеры каждого
 	{                                                // объекта Array (которые есть в матрице)
-		matr[i].setSize(other.matr[i].getSize());
+		//matr[i].setSize(other.matr[i].getSize());
+		matr[i] = Array(other.matr[i].getSize());
 	}
 
 
@@ -63,7 +70,6 @@ Matrix::Matrix(int size_M, int size_A)
 
 	for (int i = 0; i < size_M; i++)
 	{
-		//matr[i].setSize(size_A);
 		matr[i] = Array(size_A);
 	}
 
@@ -73,12 +79,6 @@ Matrix::Matrix(int size_M, int size_A)
 
 Matrix::~Matrix()
 {
-	/*
-	for (int i = 0; i < size_M; i++)
-	{
-		matr[i].~Array();
-	}
-	*/
 	delete[] matr;
 }
 
