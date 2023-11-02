@@ -21,66 +21,100 @@ void Matrix::setSize_M(int size)
 
 Matrix::Matrix()
 {
-	this->size_M = 1;
-	matr = new int[size_M];
+	this->size_M = 1;                       // по умолчанию матрица из одного элемента
+	matr = new Array[size_M];               // создаем матрицу типа Array
 	for (int i = 0; i < size_M; i++)
 	{
-		matr[i] = 0;
+		for (int j = 0; j < size_M; j++)
+		{
+		matr[i][j] = 0;                     // заполняем 0
+		}
 	}
 }
 
 //-------------------------- КОНСТРУКТОР КОПИРОВАНИЯ
 
-Array::Array(const Array& other)
+Matrix::Matrix(const Matrix& other)
 {
-	this->size = other.size;
-	arr = new int[size];
-	for (int i = 0; i < size; i++)
+	this->size_M = other.size_M;
+	matr = new Array[size_M];
+
+	for (int i = 0; i < size_M; i++)                 // устанавливаем размеры каждого
+	{                                                // объекта Array (которые есть в матрице)
+		matr[i].setSize(other.matr[i].getSize());
+	}
+
+
+	for (int i = 0; i < size_M; i++)                 // переносим старую матрицу в новую
 	{
-		arr[i] = other.arr[i];
+		for (int j = 0; j < other.matr[i].getSize(); j++)
+		{
+		matr[i][j] = other.matr[i][j];
+		}
 	}
 }
 
-//-------------------------- КОНСТРУКТОРС ПАРАМЕТРАМИ
+//-------------------------- КОНСТРУКТОР С ПАРАМЕТРАМИ
 
-Array::Array(int size)
+Matrix::Matrix(int size_M, int size_A)
 {
-	this->size = size;
-	arr = new int[size];
+	this->size_M = size_M;
+	matr = new Array[size_M];
+
+	for (int i = 0; i < size_M; i++)
+	{
+		//matr[i].setSize(size_A);
+		matr[i] = Array(size_A);
+	}
+
 }
 
 //-------------------------- ДЕСТРУКТОР
 
-Array::~Array()
+Matrix::~Matrix()
 {
-	delete[] arr;
+	/*
+	for (int i = 0; i < size_M; i++)
+	{
+		matr[i].~Array();
+	}
+	*/
+	delete[] matr;
 }
 
 //-------------------------- ВВОД МАССИВА С КЛАВИАТУРЫ
 
-void Array::input()
+void Matrix::input_M()
 {
 	cout << endl;
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size_M; i++)
 	{
-		cout << "введите " << i + 1 << "-й элемент массива: ";
-		cin >> arr[i];
+		for (int j = 0; j < matr[i].getSize(); j++)
+		{
+		cout << "введите [" << i << ", " << j << "]" << " элемент массива: ";
+
+		cin >> matr[i][j];
+		}
 	}
 	cout << endl;
 }
 
 //-------------------------- ВЫВОД МАССИВА НА ЭКРАН
 
-void Array::output()
+void Matrix::output_M()
 {
-	cout << "Массив:" << endl;
-	for (int i = 0; i < size; i++)
+	cout << "Матрица:" << endl;
+	for (int i = 0; i < size_M; i++)
 	{
-		cout << arr[i] << "\t";
+		for (int j = 0; j < matr[i].getSize(); j++)
+		{
+		cout << matr[i][j] << "\t";
+		}
+		cout << endl;
 	}
 	cout << endl;
 }
-
+/*
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА =
 
 Array& Array::operator =(const Array& other)
@@ -253,3 +287,4 @@ int Array::search(int element)
 }
 
 //--------------------------
+*/

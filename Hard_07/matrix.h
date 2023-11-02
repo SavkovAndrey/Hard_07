@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Array.h"
 
 using namespace std;
 
@@ -7,7 +8,7 @@ class Matrix
 {
 private:
 
-	int* matr;
+	Array* matr;                                       // указатель на матрицу типа Array
 	int size_M;
 
 public:
@@ -16,7 +17,7 @@ public:
 
 	Matrix(const Matrix& other);                       // конструктор копирования
 
-	Matrix(int size);                                  // конструктор с параметрами
+	Matrix(int size_M, int size_A);                                  // конструктор с параметрами
 
 	~Matrix();                                         // деструктор
 
@@ -27,7 +28,7 @@ public:
 	void input_M();                                    // ввод массива с клавиатуры
 
 	void output_M();                                   // вывод массива на экран
-
+	/*
 	Matrix& operator =(const Matrix& other);           // перегрузка оператора =
 
 	Matrix operator +(const Matrix& other);            // перегрузка оператора +
@@ -45,5 +46,5 @@ public:
 	friend istream& operator >>(istream& es, Matrix& array);   // перегрузка оператора >>
 
 	int search_M(int element);                         // поиск элемента в массиве (первого встретившегося)
-
+	*/
 };

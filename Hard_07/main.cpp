@@ -34,16 +34,20 @@ using namespace std;
 int main() {
 	setlocale(LC_ALL, "RU");
 
+    
+    int m, a;
+
+    cout << "¬ведите размер матрицы 1 : " << endl;
+    cout << "„исло строк: " << endl;
+    cin >> m;
+    cout << "„исло столбцов: " << endl;
+    cin >> a;
+
+    Matrix matrix1(m, a);
+    matrix1.input_M();
+    matrix1.output_M();
+
     /*
-    int s;
-
-    cout << "¬ведите размер массива 1 : " << endl;
-    cin >> s;
-
-    Array arr1(s);
-    arr1.input();
-    arr1.output();
-
     while (true)
     {
         menu();
