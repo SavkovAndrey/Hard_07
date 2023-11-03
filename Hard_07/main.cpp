@@ -47,19 +47,9 @@ int main() {
     matrix1.input_M();
     matrix1.output_M();
     
-    Matrix matrix2(m, a);
-    matrix2.input_M();
-    matrix2.output_M();
+    cout << "выведем конкретный элемент   " << matrix1[1][1] << endl;
 
-    if (matrix1 == matrix2)
-    {
-        cout << endl << "равны" << endl;
-    }
-    else
-    {
-        cout << endl << "НЕ равны" << endl;
-    }
-    
+   
 
     /*
     while (true)

@@ -39,9 +39,9 @@ public:
 
 	bool operator ==(const Matrix& other);             // перегрузка оператора ==
 
-	/*
-	int& operator [](int elem);                        // перегрузка оператора []
+	Array operator [](int elem);                       // перегрузка оператора []   ВАЖНО: вернет нам объект класса Array (а не int)
 
+	/*
 	friend ostream& operator <<(ostream& os, Matrix& array);   // перегрузка оператора <<
 
 	friend istream& operator >>(istream& es, Matrix& array);   // перегрузка оператора >>
