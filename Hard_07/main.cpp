@@ -50,8 +50,9 @@ int main() {
     Matrix matrix2(m, a);
     matrix2.input_M();
 
-    Matrix matrix3 = matrix1 + matrix2;
-    matrix3.output_M();
+    matrix2 += matrix1;
+    matrix2.output_M();
+
     
 
     /*

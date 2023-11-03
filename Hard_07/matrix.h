@@ -32,9 +32,9 @@ public:
 	Matrix& operator =(const Matrix& other);           // перегрузка оператора =
 
 	Matrix operator +(const Matrix& other);            // перегрузка оператора +
-	/*
-	Matrix& operator +=(int elem);                     // добавление элемента в конец массива (перегрузка +=)
 
+	Matrix& operator +=(const Matrix& other);          // перегрузка += (сложить и присвоить)
+	/*
 	Matrix& operator -(int key);                       // удаление элемента по ключу (перегрузка -)
 
 	bool operator ==(const Matrix& other);             // перегрузка оператора ==

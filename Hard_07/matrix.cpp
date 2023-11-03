@@ -155,7 +155,7 @@ Matrix Matrix::operator +(const Matrix& other)
 
 		for (int i = 0; i < size_M; i++)              // заполняем результирующую суммой 
 		{
-			for (int j = 0; j < matr[i].getSize(); j++)
+			for (int j = 0; j < matr[i].getSize(); j++)      // можно сократить , как в +=
 			{
 			result.matr[i][j] = this->matr[i][j] + other.matr[i][j];
 			}
@@ -171,28 +171,29 @@ Matrix Matrix::operator +(const Matrix& other)
 	}
 }
 
-/*
 //-------------------------- ДОБАВЛЕНИЕ ЭЛЕМЕНТА В КОНЕЦ МАССИВА (ПЕРЕГРУЗКА +=)
 
-Array& Array::operator +=(int elem)
+Matrix& Matrix::operator +=(const Matrix& other)
 {
-	Array buff(*this);                                    // создаем копию нашего массива
-
-	delete[] this->arr;                                   // удаляем наш массив
-
-	this->size = buff.size + 1;
-
-	this->arr = new int[size];                            // создаем новый массив увеличенной длинны
-
-	for (int i = 0; i < size - 1; i++)
+	if ((this->size_M == other.size_M) && (this->matr[0].getSize() == other.matr[0].getSize()))
 	{
-		this->arr[i] = buff.arr[i];
+		for (int i = 0; i < size_M; i++)
+		{
+			matr[i] = matr[i] + other.matr[i];     // Мы МОЖЕМ СДЕЛАТЬ ТАК !!!
+		}                                          // так как у нас перегружен оператор + для Array
+
+		return *this;
+	}
+	else                      // если матрицы не равны: пишем ошибку, завершаем программу
+	{
+		cout << endl << "ОШИБКА!!! Вы пытаетесь сложить матрицы разных размеров!!! " << endl;
+		system("pause");
+		exit(1);
 	}
 
-	this->arr[size - 1] = elem;                           // переносим из буфера все элементы и в конце дописываем новый
 
-	return *this;
 }
+/*
 
 //-------------------------- УДАЛЕНИЕ ЭЛЕМЕНТА ПО КЛЮЧУ (перегрузка -)
 
