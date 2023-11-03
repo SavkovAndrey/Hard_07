@@ -34,9 +34,10 @@ public:
 	Matrix operator +(const Matrix& other);            // перегрузка оператора +
 
 	Matrix& operator +=(const Matrix& other);          // перегрузка += (сложить и присвоить)
-	/*
-	Matrix& operator -(int key);                       // удаление элемента по ключу (перегрузка -)
+	
+	Matrix operator -(const Matrix& other);           // перегрузка - (вычитание матриц)
 
+	/*
 	bool operator ==(const Matrix& other);             // перегрузка оператора ==
 
 	int& operator [](int elem);                        // перегрузка оператора []

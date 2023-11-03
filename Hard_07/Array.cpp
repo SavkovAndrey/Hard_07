@@ -33,14 +33,15 @@ Array::Array()
 Array::Array(const Array& other)
 {
 	this->size = other.size;
-	arr = new int[size];
-	for (int i = 0; i < size; i++)
+
+	this->arr = new int[size];
+	for (int i = 0; i < other.size; i++)
 	{
-		arr[i] = other.arr[i];
+		this->arr[i] = other.arr[i];
 	}
 }
 
-//--------------------------  ŒÕ—“–” “Œ–— œ¿–¿Ã≈“–¿Ã»
+//--------------------------  ŒÕ—“–” “Œ– — œ¿–¿Ã≈“–¿Ã»
 
 Array::Array(int size)
 {

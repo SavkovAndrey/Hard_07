@@ -43,15 +43,16 @@ Matrix::Matrix()
 Matrix::Matrix(const Matrix& other)
 {
 	this->size_M = other.size_M;
-	matr = new Array[size_M];
 
-	for (int i = 0; i < size_M; i++)                 // устанавливаем размеры каждого
+	this->matr = new Array[other.size_M];
+
+	for (int i = 0; i < other.size_M; i++)                 // устанавливаем размеры каждого
 	{                                                // объекта Array (которые есть в матрице)
 		matr[i] = Array(other.matr[i].getSize());    // через конструктор с параметрами
 	}
 
 
-	for (int i = 0; i < size_M; i++)                 // переносим старую матрицу в новую
+	for (int i = 0; i < other.size_M; i++)                 // переносим старую матрицу в новую
 	{
 		for (int j = 0; j < other.matr[i].getSize(); j++)
 		{
@@ -171,7 +172,7 @@ Matrix Matrix::operator +(const Matrix& other)
 	}
 }
 
-//-------------------------- ДОБАВЛЕНИЕ ЭЛЕМЕНТА В КОНЕЦ МАССИВА (ПЕРЕГРУЗКА +=)
+//-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА +=
 
 Matrix& Matrix::operator +=(const Matrix& other)
 {
@@ -190,44 +191,35 @@ Matrix& Matrix::operator +=(const Matrix& other)
 		system("pause");
 		exit(1);
 	}
-
-
 }
-/*
 
-//-------------------------- УДАЛЕНИЕ ЭЛЕМЕНТА ПО КЛЮЧУ (перегрузка -)
+//-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА -
 
-Array& Array::operator -(int key)
+Matrix Matrix::operator -(const Matrix& other)
 {
-	Array temp(*this);                                   // создаем копию нашего массива
-
-	delete[] this->arr;                                  // очищаем наш массив
-
-	size = temp.size - 1;
-
-	this->arr = new int[size];                           // создаем новый массив на 1 элемент меньше
-
-	if (key <= temp.size)                                // проверяем , что выбран элемент не за пределами массива
+	if ((this->size_M == other.size_M) && (matr->getSize() == other.matr->getSize()))
 	{
-		for (int i = 0, j = 0; i < temp.size; i++)       // переносим из буфера все элементы (кроме элемента номер key)
+		Matrix result(size_M, matr->getSize());
+
+		for (int i = 0; i < size_M; i++)
 		{
-			if (i + 1 != key)
+			for (int j = 0; j < matr[i].getSize(); j++)
 			{
-				this->arr[j] = temp.arr[i];
-				j++;
+			result.matr[i][j] = matr[i][j] - other.matr[i][j];     
 			}
-		}
+		}                                         
 
-		return *this;
+		return result;
 	}
-	else
+	else                      // если матрицы не равны: пишем ошибку, завершаем программу
 	{
-		cout << endl << "ОШИБКА!!! Вы пытаетесь удалить не существующий элемент!!!" << endl;
+		cout << endl << "ОШИБКА!!! Вы пытаетесь отнять матрицы разных размеров!!! " << endl;
 		system("pause");
 		exit(1);
 	}
 }
 
+/*
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА ==
 
 bool Array::operator ==(const Array& other)
