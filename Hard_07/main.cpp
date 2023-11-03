@@ -35,23 +35,19 @@ int main() {
 	setlocale(LC_ALL, "RU");
 
     
-    int m, a;
+    int r, c;
 
     cout << "Введите размер матрицы 1 : " << endl;
     cout << "Число строк: " << endl;
-    cin >> m;
+    cin >> r;
     cout << "Число столбцов: " << endl;
-    cin >> a;
+    cin >> c;
 
-    Matrix matrix1(m, a);
+    Matrix matrix1(r, c);
     matrix1.input_M();
     matrix1.output_M();
 
-    cout << "позиция искомого элемента (60) равна: [" << matrix1.search_M(30)[0] << ", " << matrix1.search_M(30)[1] << "]" << endl;
-
-   
-
-    /*
+    
     while (true)
     {
         menu();
@@ -60,67 +56,86 @@ int main() {
 
         switch (n)
         {
-        case 1:
+        case 1:                                          // ТЕСТ операторов = и +
         {
-            int s2;
-            cout << "Введите размер массива 2 : " << endl;
-            cin >> s2;
-            Array arr2(s2);
-            cin >> arr2;
-            Array result = arr1 + arr2;
+            int r2, c2;
+            cout << "Введите размер матрицы 2 : " << endl;
+            cout << "Число строк: " << endl;
+            cin >> r2;
+            cout << "Число столбцов: " << endl;
+            cin >> c2;
+            Matrix matrix2(r2, c2);
+            cin >> matrix2;
+            Matrix result = matrix1 + matrix2;
+            cout << result;
+
+            break;
+        }
+        case 2:                                          // ТЕСТ оператора +=
+        {
+            int r2, c2;
+            cout << "Введите размер матрицы 2 : " << endl;
+            cout << "Число строк: " << endl;
+            cin >> r2;
+            cout << "Число столбцов: " << endl;
+            cin >> c2;
+            Matrix matrix2(r2, c2);
+            cin >> matrix2;
+            
+            matrix1 += matrix2;
+            cout << matrix1;
+
+            break;
+        }
+        case 3:                                          // ТЕСТ оператора -
+        {
+            int r2, c2;
+            cout << "Введите размер матрицы 2 : " << endl;
+            cout << "Число строк: " << endl;
+            cin >> r2;
+            cout << "Число столбцов: " << endl;
+            cin >> c2;
+            Matrix matrix2(r2, c2);
+            cin >> matrix2;
+
+            Matrix result = matrix1 - matrix2;
             cout << result;
 
             break;
         }
 
-        case 2:
+        case 4:                                         // ТЕСТ оператора ==
         {
-            cout << "Какой элемент добавить в конец массива?" << endl;
-            int num;
-            cin >> num;
-            arr1 += num;
-            cout << "Итог:" << endl;
-            cout << arr1;
+            int r2, c2;
+            cout << "Введите размер и элементы матрицы для сравнения" << endl;
+            cout << "Число строк: " << endl;
+            cin >> r2;
+            cout << "Число столбцов: " << endl;
+            cin >> c2;
+            Matrix matrix2(r2, c2);
+            cin >> matrix2;
 
-            break;
-        }
-        case 3:
-        {
-            cout << "Элемент с каким номером удалить из массива?" << endl;
-            int num;
-            cin >> num;
-            arr1 - num;
-            cout << "Итог:" << endl;
-            cout << arr1;
-
-            break;
-        }
-
-        case 4:
-        {
-            cout << "Введите размер и элементы массива для сравнения" << endl;
-            int s3;
-            cin >> s3;
-            Array arr3(s3);
-            cin >> arr3;
-            if (arr1 == arr3)
+            if (matrix1 == matrix2)
             {
-                cout << endl << "Массивы равны" << endl;
+                cout << endl << "Матрицы равны" << endl;
             }
             else
             {
-                cout << endl << "Массивы не равны" << endl;
+                cout << endl << "Матрицы не равны" << endl;
             }
 
             break;
         }
 
-        case 5:
+        case 5:                                           // ТЕСТ оператора  []
         {
-            cout << endl << "выберите индекс элемента, который нужно взять:" << endl;
-            int num;
-            cin >> num;
-            cout << "Элемент с индексом " << num << " это: " << arr1[num] << endl;
+            cout << endl << "выберите индексы элемента, который нужно взять:" << endl;
+            int num1, num2;
+            cout << "Строка: ";
+            cin >> num1;
+            cout << "Столбец: ";
+            cin >> num2;
+            cout << "Элемент с индексом [" << num1 << ", " << num2 << "]  это: " << matrix1[num1][num2] << endl;
 
             break;
         }
@@ -130,9 +145,11 @@ int main() {
             cout << endl << "номер какого элемента вы хотите найти?" << endl;
             int elem;
             cin >> elem;
-            if (arr1.search(elem) >= 0)
+
+            if (matrix1.search_M(elem) != NULL)
             {
-                cout << endl << "элемент " << elem << " имеет индекс: " << arr1.search(elem) << endl;
+                cout << endl << "элемент " << elem << " имеет индекс: [" << matrix1.search_M(elem)[0] 
+                     << ", " << matrix1.search_M(elem)[1] << "];" << endl;
             }
             else
             {
@@ -141,15 +158,7 @@ int main() {
 
             break;
         }
-
-        case 7:
-        {
-            cout << "Массив был отсортирован по возрастанию, результат: " << endl;
-            arr1.sort();
-            cout << arr1;
-
-            break;
-        }
+       
         case 0:
         {
             cout << endl << "Вы вышли из программы." << endl;
@@ -162,7 +171,6 @@ int main() {
 
     }
 
-    */
 
 	system("pause");
 	return 0;
