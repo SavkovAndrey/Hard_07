@@ -46,6 +46,12 @@ int main() {
     Matrix matrix1(m, a);
     matrix1.input_M();
     matrix1.output_M();
+    
+    Matrix matrix2;
+    matrix2 = matrix1;
+
+    matrix2.output_M();
+    
 
     /*
     while (true)

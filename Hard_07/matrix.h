@@ -28,9 +28,9 @@ public:
 	void input_M();                                    // ввод массива с клавиатуры
 
 	void output_M();                                   // вывод массива на экран
-	/*
-	Matrix& operator =(const Matrix& other);           // перегрузка оператора =
 
+	Matrix& operator =(const Matrix& other);           // перегрузка оператора =
+	/*
 	Matrix operator +(const Matrix& other);            // перегрузка оператора +
 
 	Matrix& operator +=(int elem);                     // добавление элемента в конец массива (перегрузка +=)

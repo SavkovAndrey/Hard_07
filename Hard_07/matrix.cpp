@@ -47,8 +47,7 @@ Matrix::Matrix(const Matrix& other)
 
 	for (int i = 0; i < size_M; i++)                 // устанавливаем размеры каждого
 	{                                                // объекта Array (которые есть в матрице)
-		//matr[i].setSize(other.matr[i].getSize());
-		matr[i] = Array(other.matr[i].getSize());
+		matr[i] = Array(other.matr[i].getSize());    // через конструктор с параметрами
 	}
 
 
@@ -70,8 +69,8 @@ Matrix::Matrix(int size_M, int size_A)
 
 	for (int i = 0; i < size_M; i++)
 	{
-		matr[i] = Array(size_A);
-	}
+		matr[i] = Array(size_A);              // в каждом объекте matr создаем объект Array 
+	}                                         // с нужным числом элементов
 
 }
 
@@ -114,28 +113,36 @@ void Matrix::output_M()
 	}
 	cout << endl;
 }
-/*
+
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА =
 
-Array& Array::operator =(const Array& other)
+Matrix& Matrix::operator =(const Matrix& other)
 {
-	this->size = other.size;                          // берем нашему размеру, размер присваеваемого
+	this->size_M = other.size_M;                     // берем нашему размеру, размер присваеваемого
 
-	if (this->arr != nullptr)                         // очищаем наш массив, если он не пуст
+	if (this->matr != nullptr)                       // очищаем наш массив, если он не пуст
 	{
-		delete[] this->arr;
+		delete[] this->matr;
 	}
 
-	this->arr = new int[other.size];                  // выделяем нашему массиву память (что бы влез присваеваемый)
+	this->matr = new Array[size_M];            // выделяем нашему массиву память (что бы влез присваеваемый)
 
-	for (int i = 0; i < other.size; i++)              // переносим в наш массив пресваеваемый массив
+	for (int i = 0; i < size_M; i++)                 // создаем в каждом элементе объект Array
 	{
-		this->arr[i] = other.arr[i];
+		matr[i] = Array(other.matr[i].getSize());    // размер каждого Array берем от "другого" Array
+	}
+
+	for (int i = 0; i < size_M; i++)              // переносим в наш массив пресваеваемый массив
+	{
+		for (int j = 0; j < matr[i].getSize(); j++)
+		{
+		this->matr[i][j] = other.matr[i][j];
+		}
 	}
 
 	return *this;                                     // возвращаем разименованный указатель на наш объект
 }
-
+/*
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА +
 
 Array Array::operator +(const Array& other)
