@@ -252,15 +252,14 @@ Array Matrix::operator [](int elem)          // вернет объект класса Array (а не
 }                                           // объекта Array 1 элемент ( так как у класса Array перегружен оператор [])
 
 
-/*
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА <<
 
-ostream& operator <<(ostream& os, Array& array)
+ostream& operator <<(ostream& os, Matrix& matrix)
 {
-	cout << "Массив:" << endl;
-	for (int i = 0; i < array.size; i++)
+	cout << "Матрица:" << endl;
+	for (int i = 0; i < matrix.size_M; i++)
 	{
-		os << setw(4) << array.arr[i];
+		os << setw(4) << matrix.matr[i];
 	}
 	cout << endl;
 
@@ -269,12 +268,12 @@ ostream& operator <<(ostream& os, Array& array)
 
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА >>
 
-istream& operator >>(istream& es, Array& array)
+istream& operator >>(istream& es, Matrix& matrix)
 {
-	for (int i = 0; i < array.size; i++)
+	for (int i = 0; i < matrix.size_M; i++)
 	{
-		cout << "Введите " << i + 1 << "-й элемент массива: ";
-		es >> array.arr[i];
+		cout << "Введите " << i + 1 << "-й массив матрицы: " << endl;
+		es >> matrix.matr[i];
 	}
 	cout << endl;
 
@@ -283,17 +282,24 @@ istream& operator >>(istream& es, Array& array)
 
 //-------------------------- ПОИСК ЭЛЕМЕНТА МАССИВА (ПЕРВОГО ВСТРЕТИВШЕГОСЯ)
 
-int Array::search(int element)
+int* Matrix::search_M(int element)
 {
-	for (int i = 0; i < size; i++)            // перебираем элементы и ищем нужный нам
+	int position[2]{ 0 };                          // массив для хранения координат найденного элемента
+
+	for (int i = 0; i < size_M; i++)               // перебираем элементы и ищем нужный нам
 	{
-		if (arr[i] == element)
+		for (int j = 0; j < matr->getSize(); j++)
 		{
-			return i;                         // возвращаем его номер , если нашли
+		if (matr[i][j] == element)
+		{
+			position[0] = i;
+			position[1] = j;
+			return position;                       // возвращаем массив с двумя координатами
+		}
 		}
 	}
-	return -1;                                // если нет, возвращаем -1, как ошибку
+	return NULL;                                   // если нет, возвращаем пустой массив
 }
-
+// пример применения: 
+// cout << "позиция искомого элемента (60) равна: [" << matrix1.search_M(30)[0] << ", " << matrix1.search_M(30)[1] << "]" << endl;
 //--------------------------
-*/

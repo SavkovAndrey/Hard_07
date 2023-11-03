@@ -41,11 +41,10 @@ public:
 
 	Array operator [](int elem);                       // перегрузка оператора []   ВАЖНО: вернет нам объект класса Array (а не int)
 
-	/*
-	friend ostream& operator <<(ostream& os, Matrix& array);   // перегрузка оператора <<
+	friend ostream& operator <<(ostream& os, Matrix& matrix);   // перегрузка оператора <<
 
-	friend istream& operator >>(istream& es, Matrix& array);   // перегрузка оператора >>
+	friend istream& operator >>(istream& es, Matrix& matrix);   // перегрузка оператора >>
 
-	int search_M(int element);                         // поиск элемента в массиве (первого встретившегося)
-	*/
+	int* search_M(int element);                        // поиск элемента в массиве (первого встретившегося)
+	
 };

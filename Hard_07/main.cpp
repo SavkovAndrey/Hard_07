@@ -46,8 +46,8 @@ int main() {
     Matrix matrix1(m, a);
     matrix1.input_M();
     matrix1.output_M();
-    
-    cout << "выведем конкретный элемент   " << matrix1[1][1] << endl;
+
+    cout << "позиция искомого элемента (60) равна: [" << matrix1.search_M(30)[0] << ", " << matrix1.search_M(30)[1] << "]" << endl;
 
    
 

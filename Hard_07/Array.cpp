@@ -214,7 +214,7 @@ int& Array::operator [](int elem)          // int возвращаем по ссылке, что бы м
 
 ostream& operator <<(ostream& os, Array& array)
 {
-	cout << "Массив:" << endl;
+	cout << endl;
 	for (int i = 0; i < array.size; i++)
 	{
 		os << setw(4) << array.arr[i];
