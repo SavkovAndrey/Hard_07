@@ -47,10 +47,11 @@ int main() {
     matrix1.input_M();
     matrix1.output_M();
     
-    Matrix matrix2;
-    matrix2 = matrix1;
+    Matrix matrix2(m, a);
+    matrix2.input_M();
 
-    matrix2.output_M();
+    Matrix matrix3 = matrix1 + matrix2;
+    matrix3.output_M();
     
 
     /*

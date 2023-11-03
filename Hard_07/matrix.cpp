@@ -142,18 +142,23 @@ Matrix& Matrix::operator =(const Matrix& other)
 
 	return *this;                                     // возвращаем разименованный указатель на наш объект
 }
-/*
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА +
 
-Array Array::operator +(const Array& other)
+Matrix Matrix::operator +(const Matrix& other)
 {
-	if (this->size == other.size)                         // сравниваем размеры слогаемых матриц
-	{
-		Array result(other.size);                         // создаем результирующую матрицу
+		    //  сравниваем размеры слогаемых матриц (и ПОД-МАТРИЦ, только 0-ой элем, так как
+	        //  ПОД-МАТРИЦЫ все одинаковы в рамках одной матрицы
 
-		for (int i = 0; i < other.size; i++)              // заполняем результирующую суммой 
+	if ( (this->size_M == other.size_M) && (this->matr[0].getSize() == other.matr[0].getSize()) )  
+	{
+		Matrix result(size_M, matr->getSize());           // создаем результирующую матрицу
+
+		for (int i = 0; i < size_M; i++)              // заполняем результирующую суммой 
 		{
-			result.arr[i] = this->arr[i] + other.arr[i];
+			for (int j = 0; j < matr[i].getSize(); j++)
+			{
+			result.matr[i][j] = this->matr[i][j] + other.matr[i][j];
+			}
 		}
 
 		return result;                                    // возвращаем результирующую
@@ -166,6 +171,7 @@ Array Array::operator +(const Array& other)
 	}
 }
 
+/*
 //-------------------------- ДОБАВЛЕНИЕ ЭЛЕМЕНТА В КОНЕЦ МАССИВА (ПЕРЕГРУЗКА +=)
 
 Array& Array::operator +=(int elem)

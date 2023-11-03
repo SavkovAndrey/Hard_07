@@ -30,9 +30,9 @@ public:
 	void output_M();                                   // вывод массива на экран
 
 	Matrix& operator =(const Matrix& other);           // перегрузка оператора =
-	/*
-	Matrix operator +(const Matrix& other);            // перегрузка оператора +
 
+	Matrix operator +(const Matrix& other);            // перегрузка оператора +
+	/*
 	Matrix& operator +=(int elem);                     // добавление элемента в конец массива (перегрузка +=)
 
 	Matrix& operator -(int key);                       // удаление элемента по ключу (перегрузка -)
