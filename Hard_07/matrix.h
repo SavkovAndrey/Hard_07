@@ -35,11 +35,11 @@ public:
 
 	Matrix& operator +=(const Matrix& other);          // перегрузка += (сложить и присвоить)
 	
-	Matrix operator -(const Matrix& other);           // перегрузка - (вычитание матриц)
+	Matrix operator -(const Matrix& other);            // перегрузка - (вычитание матриц)
 
-	/*
 	bool operator ==(const Matrix& other);             // перегрузка оператора ==
 
+	/*
 	int& operator [](int elem);                        // перегрузка оператора []
 
 	friend ostream& operator <<(ostream& os, Matrix& array);   // перегрузка оператора <<

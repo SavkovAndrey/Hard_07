@@ -49,13 +49,16 @@ int main() {
     
     Matrix matrix2(m, a);
     matrix2.input_M();
+    matrix2.output_M();
 
-    Matrix matrix3 = matrix1 - matrix2;
-    matrix3.output_M();
-
-    Matrix matrix4(matrix3);
-    matrix4.output_M();
-
+    if (matrix1 == matrix2)
+    {
+        cout << endl << "נאגםû" << endl;
+    }
+    else
+    {
+        cout << endl << "ֵֽ נאגםû" << endl;
+    }
     
 
     /*

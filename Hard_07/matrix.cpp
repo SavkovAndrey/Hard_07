@@ -195,7 +195,7 @@ Matrix& Matrix::operator +=(const Matrix& other)
 
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА -
 
-Matrix Matrix::operator -(const Matrix& other)
+Matrix Matrix::operator -(const Matrix& other)                      // ВАЖНО! передача ПО ЗНАЧЕНИЮ ( не по ссылке)
 {
 	if ((this->size_M == other.size_M) && (matr->getSize() == other.matr->getSize()))
 	{
@@ -219,18 +219,20 @@ Matrix Matrix::operator -(const Matrix& other)
 	}
 }
 
-/*
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА ==
 
-bool Array::operator ==(const Array& other)
+bool Matrix::operator ==(const Matrix& other)
 {
-	if (this->size == other.size)                       // если размеры равны, смотрим дальше
+	if ((this->size_M == other.size_M) && (matr->getSize() == other.matr->getSize()))   // если размеры равны, смотрим дальше
 	{
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < size_M; i++)
 		{
-			if (this->arr[i] != other.arr[i])           // поэлементно сравниваем, если хоть один элемент не равен - false
+			for (int j = 0; j < matr->getSize(); j++)
 			{
-				return false;
+			    if (this->matr[i][j] != other.matr[i][j])      // поэлементно сравниваем, если хоть один элемент не равен - false
+			    {                                              // matr[i] != other.matr[i] , так нельзя , так как у класса
+				return false;                                  // Array не перегружен оператор !=
+			    } 
 			}
 		}
 
@@ -242,6 +244,7 @@ bool Array::operator ==(const Array& other)
 	}
 }
 
+/*
 //-------------------------- ПЕРЕГРУЗКА ОПЕРАТОРА []
 
 int& Array::operator [](int elem)          // int возвращаем по ссылке, что бы мы могли не только выводить, но и менять
